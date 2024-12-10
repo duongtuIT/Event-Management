@@ -7,9 +7,10 @@ def create_connection():
         conn = mysql.connector.connect(
             host="127.0.0.1",
             user="root", 
-            password="123456",
-            database="event_database"
- 
+            password="310303",
+            database="event_database",
+            port=3307
+
         )
         return conn
     except Error as e:

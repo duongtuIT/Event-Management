@@ -13,8 +13,9 @@ def Book():
     
     top1 = Tk()
     top1.geometry('300x280')
-    top1.title('Book ticket')
-    
+    top1.title('BOOK TICKET')
+    top1.rowconfigure([0,1,2,3,4], weight=1, minsize=50)
+    top1.columnconfigure([0,1], weight=1, minsize=50)
     customer_name = StringVar(top1)
     ticket_id = StringVar(top1)
     event_name = StringVar(top1)
@@ -39,10 +40,10 @@ def Book():
         else:
             show_message('Error', booking_status)
     
-    Label(top1, text='Enter details', font=('Arial', 14)).grid(row=0, column=0, padx=10, pady=10, columnspan=2)
+    Label(top1, text='Enter your personal details', font=('Arial', 14, 'bold')).grid(row=0, column=0, padx=10, pady=10, columnspan=2, sticky='nswe')
     
     Label(top1, text='Name', font=('Arial', 12)).grid(row=1, column=0, padx=10, pady=10, sticky='w')
-    Entry(top1, textvariable=customer_name).grid(row=1, column=1)
+    Entry(top1, textvariable=customer_name).grid(row=1, column=1, sticky='we', padx=20)
     
     Label(top1, text='Ticket Id', font=('Arial', 12)).grid(row=2, column=0, padx=10, pady=10, sticky='w')
     Entry(top1, textvariable=ticket_id, state='disabled').grid(row=2, column=1)
