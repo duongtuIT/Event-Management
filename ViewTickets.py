@@ -1,7 +1,7 @@
 from tkinter import *
 from DataBase import EventDetails
 from DataBase import TicketDetails
-
+from main import Main
 def ViewTickets():
     top4 = Tk()
     top4.geometry('600x400')
@@ -29,9 +29,12 @@ def ViewTickets():
             Label(top4, text=required_tickets[i][2], font=('Arial', 12), bg='#FFFDF4', width=10).grid(row=i+4, column=2)
             Label(top4, text=required_tickets[i][4], font=('Arial', 12), bg='#FFFDF4', width=10).grid(row=i+4, column=3)
     
+    def Back():
+        top4.destroy()
+        Main()
     Label(top4, text='Select Event', font=('Arial', 16), bg='#FFFDF4').grid(row=0, column=0, padx=10, sticky='w', pady=10)
     OptionMenu(top4, event_name, *event_names_list).grid(row=0, column=1, columnspan=2, sticky='w')
     
-    Button(top4, text='Submit', command=ShowTickets, bg='#6C767D', fg='white', font=('Arial', 12, 'bold')).grid(row=0, column=3, sticky='we', padx=25)
-    
+    Button(top4, text='Submit', command=ShowTickets, bg='#6C767D', fg='white', font=('Arial', 12, 'bold')).grid(row=0, column=3, sticky='we', padx=10)
+    Button(top4, text='Back', command=Back, bg='#F8CECC', fg='black', font=('Arial', 12, 'bold')).grid(row=0, column=4, sticky='we', padx=10)
     top4.mainloop()

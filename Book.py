@@ -4,8 +4,7 @@ from DataBase import TicketDetails
 from DataBase import EventDetails
 from DataBase import BookTicket
 from Message import show_message
-
-
+from main import Main
 def Book():
     
     ticket_ids = TicketDetails()[1]
@@ -14,6 +13,7 @@ def Book():
     top1 = Tk()
     top1.geometry('300x280')
     top1.title('BOOK TICKET')
+    top1.configure(bg='#FFFDF4')
     top1.rowconfigure([0,1,2,3,4], weight=1, minsize=50)
     top1.columnconfigure([0,1], weight=1, minsize=50)
     customer_name = StringVar(top1)
@@ -40,17 +40,20 @@ def Book():
         else:
             show_message('Error', booking_status)
     
-    Label(top1, text='Enter your personal details', font=('Arial', 14, 'bold')).grid(row=0, column=0, padx=10, pady=10, columnspan=2, sticky='nswe')
+    def Back():
+        top1.destroy()
+        Main()
+    Label(top1, text='Enter your personal details', font=('Arial', 14, 'bold'), bg='#FFFDF4').grid(row=0, column=0, padx=10, pady=10, columnspan=2, sticky='nswe')
     
-    Label(top1, text='Name', font=('Arial', 12)).grid(row=1, column=0, padx=10, pady=10, sticky='w')
+    Label(top1, text='Name', font=('Arial', 12), bg='#FFFDF4').grid(row=1, column=0, padx=10, pady=10, sticky='w')
     Entry(top1, textvariable=customer_name).grid(row=1, column=1, sticky='we', padx=20)
     
-    Label(top1, text='Ticket Id', font=('Arial', 12)).grid(row=2, column=0, padx=10, pady=10, sticky='w')
+    Label(top1, text='Ticket Id', font=('Arial', 12), bg='#FFFDF4').grid(row=2, column=0, padx=10, pady=10, sticky='w')
     Entry(top1, textvariable=ticket_id, state='disabled').grid(row=2, column=1)
     
-    Label(top1, text='Event', font=('Arial', 12)).grid(row=3, column=0, padx=10, sticky='w', pady=10)
+    Label(top1, text='Event', font=('Arial', 12), bg='#FFFDF4').grid(row=3, column=0, padx=10, sticky='w', pady=10)
     OptionMenu(top1, event_name, *event_names_list).grid(row=3, column=1)
     
-    Button(top1, text='Confirm', bg='green', fg='white', font=('Arial', 17), width=9, command=lambda:BookNow()).grid(row=4, column=1, pady=10)
-    
+    Button(top1, text='Book Ticket', bg='#FFE6CC', fg='black', font=('Arial', 15, 'bold'), width=10, command=lambda:BookNow()).grid(row=4, column=1, pady=10, padx=10)
+    Button(top1, text='Back', bg='#FFE6CC', fg='black', font=('Arial', 15, 'bold'), width=10, command=lambda:Back()).grid(row=4, column=0, pady=10, padx=10)
     top1.mainloop()
