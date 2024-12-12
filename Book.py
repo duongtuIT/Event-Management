@@ -3,7 +3,7 @@ from GenerateNewCode import random_id
 from DataBase import TicketDetails
 from DataBase import EventDetails
 from DataBase import BookTicket
-from Message import show_message
+from Message import show_message, show_message2
 from main import Main
 def Book():
     
@@ -21,24 +21,30 @@ def Book():
     event_name = StringVar(top1)
     
     event_name.set('Select event')
-    
+   
     while True:
         new_ticket_id = random_id()
         if new_ticket_id not in ticket_ids:
             ticket_id.set(new_ticket_id)
             break
         continue
-    
+    def generate_new_ticket_id():
+        new_ticket_id = random_id()
+        if new_ticket_id not in ticket_ids:
+            ticket_id.set(new_ticket_id)
+        
     def BookNow():
         if len(customer_name.get())<5:
-            show_message('Error', 'Enter valid details')
+            show_message2('Error', 'Enter valid details')
             return
         booking_status = BookTicket(customer_name.get(), ticket_id.get(), event_name.get())
         if booking_status == 'Success':
             show_message('Success', 'booking successful')
-            return
+            customer_name.set("")
+            event_name.set('Select event')
+            generate_new_ticket_id()
         else:
-            show_message('Error', booking_status)
+            show_message2('Error', booking_status)
     
     def Back():
         top1.destroy()

@@ -2,6 +2,7 @@ from tkinter import *
 from DataBase import EventDetails
 from DataBase import TicketDetails
 from main import Main
+from datetime import datetime
 def ViewEvents():
     
     event_details = EventDetails()[5]
@@ -22,9 +23,19 @@ def ViewEvents():
     
     
     for i in range(len(event_details)):
+        event_date = event_details[i][2]
+        
+        try:
+            # Chuyển ngày từ YYYY-MM-DD sang DD/MM/YYYY
+           formatted_date = datetime.strptime(str(event_date), "%Y-%m-%d").strftime("%d/%m/%Y")
+
+        except ValueError:
+            formatted_date = event_date
+        
+        # Hiển thị thông tin sự kiện trên giao diện
         Label(top4, text=event_details[i][0], font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=1)
         Label(top4, text=event_details[i][1], font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=2)
-        Label(top4, text=event_details[i][2], font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=3)
+        Label(top4, text=formatted_date, font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=3)
         Label(top4, text=event_details[i][3], font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=4)
         Label(top4, text=event_details[i][4], font=('Arial', 12), bg='#FFFDF4', width=20).grid(row=i+2, column=5)
     

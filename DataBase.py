@@ -7,9 +7,9 @@ def create_connection():
         conn = mysql.connector.connect(
             host="127.0.0.1",
             user="root", 
-            password="310303",
+            password="123456",
             database="event_database",
-            port=3307
+            port=3306
 
         )
         return conn
