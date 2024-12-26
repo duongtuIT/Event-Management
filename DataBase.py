@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
-
+#sua thu vien
 # Kết nối đến MySQL
 def create_connection():
     try:
