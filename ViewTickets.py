@@ -39,8 +39,8 @@ def ViewTickets():
             # Label(top4, text=formatted_date, font=('Arial', 12), bg='#FFFDF4', width=10).grid(row=i+4, column=3)
             customer_name_label = Label(top4, text=required_tickets[i][0], font=('Arial', 12), bg='#FFFDF4', width=10)
             customer_name_label.grid(row=i+4, column=0)
-            labels.append(customer_name_label)  # Lưu label để có thể xóa sau này
-
+            labels.append(customer_name_label)  
+            # Lưu label để có thể xóa sau này
             ticket_id_label = Label(top4, text=required_tickets[i][1], font=('Arial', 12), bg='#FFFDF4', width=10)
             ticket_id_label.grid(row=i+4, column=1)
             labels.append(ticket_id_label)
