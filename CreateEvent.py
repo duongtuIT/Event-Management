@@ -52,14 +52,14 @@ def CreateEvent():
             except ValueError:
                 show_message2('Error', 'Invalid time format')
                 return
-        # event_status = CreateNewEvent(
-        #     event_name.get(), 
-        #     event_id.get(), 
-        #     event_date.get(), 
-        #     event_time.get(), 
-        #     event_duration.get()
-        #     )
-        #event_status = CreateNewEvent(event_name.get(), event_id.get(), formatted_date, event_time.get(), event_duration.get())
+        """event_status = CreateNewEvent(
+             event_name.get(), 
+             event_id.get(), 
+             event_date.get(), 
+             event_time.get(), 
+             event_duration.get()
+             )
+        event_status = CreateNewEvent(event_name.get(), event_id.get(), formatted_date, event_time.get(), event_duration.get())"""
         event_status = CreateNewEvent(event_name.get(), event_id.get(), formatted_date, formatted_time, event_duration.get())
         if event_status == 'Success':
             show_message('Success', 'Event created successfully')
