@@ -25,7 +25,6 @@ def CancelTicket():
             delete_status = DeleteTicket(ticket_id)
             if delete_status == 'Success':
                 show_message('Success', 'Ticket deleted successfully')
-                # Hiển thị danh sách vé ban đầu
                 update_ticket_list()
             else:
                 show_message2('Error', delete_status)
@@ -38,13 +37,11 @@ def CancelTicket():
         Label(top3, text=TicketDetails()[7][i][4], width=20, bg='#FFFDF4').grid(row=i+2,  padx=10, column=3)
         Button(top3, text='Delete', fg='black', bg='#F8CECC', command=lambda current_id=TicketDetails()[7][i][1]: delete_rows(current_id)).grid(row=i+2, column=4, pady=5)
     def update_ticket_list():
-        # Xóa các label cũ trước khi cập nhật lại danh sách vé
         for widget in top3.winfo_children():
             if isinstance(widget, Label) or isinstance(widget, Button):
                 if widget.grid_info().get('row') > 1:
                     widget.grid_forget()
 
-        # Hiển thị lại danh sách vé mới
         for i in range(len(TicketDetails()[7])):
             Label(top3, text=TicketDetails()[7][i][0], width=20, bg='#FFFDF4').grid(row=i+2,  column=0)
             Label(top3, text=TicketDetails()[7][i][1], width=20, bg='#FFFDF4').grid(row=i+2,  padx=10, column=1)
